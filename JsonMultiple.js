@@ -1,14 +1,16 @@
-const url = "https://randomuser.me/api/?result=5";
-var output = document.getElementById('output1');
+const output = document.getElementById("output1");
+const url = "https://randomuser.me/api/?results=5";
 
-fetch(url).then(function(res){
-    return res.json()
-}).then(function(data){
-    data.results.forEach(person => {
-        console.log(person.name.first);
-        console.log(person.picture.thumbnail);
-        output1.innerHTML = person.name.first + " ";
-        output1.innerHTML = "<img src="+person.picture.thumbnail+"'><br>";
+fetch(url)
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (data) {
+    data.results.forEach(function (person) {
+      console.log(person.name.first);
+      console.log(person.picture.thumbnail);
+      output.innerHTML += person.name.first + " ";
+      output.innerHTML += "<img src='" + person.picture.thumbnail + "'><br>";
     });
-})
-
+    console.log(data);
+  });
